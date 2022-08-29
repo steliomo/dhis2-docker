@@ -1,0 +1,45 @@
+version: "3.2"
+
+services:
+     ${PROJECT}-db:
+         build:
+             context: ./database
+         ports:
+             - "5432:5432"
+         image: ${PROJECT}-db
+         environment:
+             - POSTGRES_USER=${POSTGRES_USER}
+             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+             - POSTGRES_DB=${POSTGRES_DB}
+         volumes:
+              - type: volume
+                source: dbdata
+                target: /opt/dhis/data
+         restart: unless-stopped
+
+     ${PROJECT}-webcontainer:
+         build:
+             context: ./webcontainer
+         ports:
+             - "8080:8080"
+         image: ${PROJECT}-webcontainer
+         depends_on:
+             - "${PROJECT}-db"
+         volumes:
+           - type: bind
+             source: /opt/dhis/data/war
+             target: /usr/local/tomcat/webapps
+         restart: unless-stopped
+
+     ${PROJECT}-webserver:
+         build:
+             context: ./webserver
+         image: ${PROJECT}-webserver
+         restart: always
+         ports:
+             - "80:80"
+             - "443:443"
+         depends_on:
+             - "${PROJECT}-webcontainer"
+volumes:
+  dbdata:
