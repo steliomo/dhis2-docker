@@ -1,7 +1,7 @@
 version: "3.2"
 
 services:
-     ${PROJECT}-db:
+     db:
          build:
              context: ./database
          ports:
@@ -17,7 +17,7 @@ services:
                 target: /opt/dhis/data
          restart: unless-stopped
 
-     ${PROJECT}-webcontainer:
+     webcontainer:
          build:
              context: ./webcontainer
          ports:
@@ -31,7 +31,7 @@ services:
              target: /usr/local/tomcat/webapps
          restart: unless-stopped
 
-     ${PROJECT}-webserver:
+     webserver:
          build:
              context: ./webserver
          image: ${PROJECT}-webserver
