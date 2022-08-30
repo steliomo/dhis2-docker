@@ -1,16 +1,16 @@
 version: "3.2"
 
 services:
-     db:
+     database:
          build:
              context: ./database
          ports:
              - "5432:5432"
-         image: db
+         image: database
          environment:
-             - POSTGRES_USER=${POSTGRES_USER}
-             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-             - POSTGRES_DB=${POSTGRES_DB}
+             - POSTGRES_USER=admin
+             - POSTGRES_PASSWORD=admin
+             - POSTGRES_DB=dhis2
          volumes:
               - type: volume
                 source: dbdata
@@ -24,7 +24,7 @@ services:
              - "8080:8080"
          image: webcontainer
          depends_on:
-             - "${PROJECT}-db"
+             - "database"
          volumes:
            - type: bind
              source: /opt/dhis/data/war
@@ -40,6 +40,6 @@ services:
              - "80:80"
              - "443:443"
          depends_on:
-             - "${PROJECT}-webcontainer"
+             - "webcontainer"
 volumes:
   dbdata:
