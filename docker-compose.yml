@@ -41,5 +41,9 @@ services:
              - "443:443"
          depends_on:
              - "webcontainer"
+         volumes:
+             - type: bind
+               source: /etc/letsencrypt
+               target: /opt/certificates
 volumes:
   dbdata:
