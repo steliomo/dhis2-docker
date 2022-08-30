@@ -5,6 +5,6 @@ LABEL maintainer="steliomo@gmail.com"
 ADD localtime /etc/localtime
 ADD postgresql.conf /etc/postgresql/postgresql.conf
 
-VOLUME /var/lib/postgresql
+VOLUME /var/lib/postgresql/data
 
 EXPOSE 5432

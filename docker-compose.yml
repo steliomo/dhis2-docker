@@ -14,7 +14,7 @@ services:
          volumes:
               - type: volume
                 source: dbdata
-                target: /var/lib/postgresql
+                target: /var/lib/postgresql/data
          restart: unless-stopped
 
      webcontainer:
