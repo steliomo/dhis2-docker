@@ -44,6 +44,12 @@ services:
          volumes:
              - type: bind
                source: /etc/letsencrypt
-               target: /opt/certificates
+               target: /etc/letsencrypt
+             - type: bind
+               source: /var/lib/letsencrypt
+               target: /var/lib/letsencrypt
+             - type: bind
+               source: /var/www/letsencrypt
+               target: /var/www/letsencrypt
 volumes:
   dbdata:
