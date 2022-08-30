@@ -6,7 +6,7 @@ services:
              context: ./database
          ports:
              - "5432:5432"
-         image: ${PROJECT}-db
+         image: db
          environment:
              - POSTGRES_USER=${POSTGRES_USER}
              - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -22,7 +22,7 @@ services:
              context: ./webcontainer
          ports:
              - "8080:8080"
-         image: ${PROJECT}-webcontainer
+         image: webcontainer
          depends_on:
              - "${PROJECT}-db"
          volumes:
@@ -34,7 +34,7 @@ services:
      webserver:
          build:
              context: ./webserver
-         image: ${PROJECT}-webserver
+         image: webserver
          restart: always
          ports:
              - "80:80"
