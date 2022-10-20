@@ -1,4 +1,4 @@
-FROM tomcat:8-jre8-alpine
+FROM tomcat:8.5.83-jdk11-corretto-al2
 
 ADD setenv.sh /usr/local/tomcat/bin/setenv.sh
 ADD localtime /etc/localtime

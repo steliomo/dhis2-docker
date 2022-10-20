@@ -1,2 +1,2 @@
-export JAVA_OPTS="-Dfile.encoding=UTF-8 -server -Xms4096m -Xmx12288m -XX:PermSize=256m -XX:MaxPermSize=768m -Duser.timezone=Africa/Maputo"
+export JAVA_OPTS="-Dfile.encoding=UTF-8 -server -Xms24G -Xmx24G -XX:PermSize=512m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:ParallelGCThreads=20 -XX:ConcGCThreads=5 -XX:InitiatingHeapOccupancyPercent=70 -Duser.timezone=Africa/Maputo"
 export DHIS2_HOME='/home/dhis/config'
