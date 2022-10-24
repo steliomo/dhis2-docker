@@ -70,7 +70,8 @@
                connectionTimeout="20000"
                redirectPort="8443" 
                relaxedQueryChars="[]"
-               scheme="https" proxyPort="443" />
+               scheme="https" proxyPort="443" 
+               maxthreads="400"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
