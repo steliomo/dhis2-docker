@@ -1,4 +1,4 @@
-FROM postgis/postgis:10-3.0
+FROM postgis/postgis:13-3.3
 
 LABEL maintainer="steliomo@gmail.com"
 
