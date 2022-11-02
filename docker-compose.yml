@@ -29,8 +29,10 @@ services:
            - type: bind
              source: /opt/dhis/data/war
              target: /usr/local/tomcat/webapps
+           - type: bind
+             source: /opt/dhis/data/logs
+             target: /home/dhis/config/logs
          restart: unless-stopped
-
      webserver:
          build:
              context: ./webserver
