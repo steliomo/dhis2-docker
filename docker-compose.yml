@@ -4,6 +4,8 @@ services:
      database:
          build:
              context: ./database
+             shm_size: 512mb
+         shm_size: 512mb
          ports:
              - "5432:5432"
          image: database
