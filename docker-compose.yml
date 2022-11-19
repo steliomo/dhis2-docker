@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.5"
 
 services:
      database:
@@ -18,7 +18,7 @@ services:
               - type: tmpfs
                 target: /dev/shm
                 tmpfs:
-                    size: 2048000000 
+                   size: 2048000000 
          restart: unless-stopped
 
      webcontainer:
