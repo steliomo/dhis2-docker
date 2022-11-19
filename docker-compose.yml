@@ -4,7 +4,7 @@ services:
      database:
          build:
              context: ./database
-         shm_size: 2gb
+         shm_size: 1gb
          ports:
              - "5432:5432"
          image: database
@@ -12,10 +12,14 @@ services:
              - POSTGRES_USER=admin
              - POSTGRES_PASSWORD=admin
              - POSTGRES_DB=dhis2
+         tmpfs:
+             - /tmp:size=1gb
          volumes:
               - type: volume
                 source: dbdata
                 target: /var/lib/postgresql/data
+              - type: tmpfs
+                target: /dev/shm
          restart: unless-stopped
 
      webcontainer:
