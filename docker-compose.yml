@@ -11,8 +11,6 @@ services:
              - POSTGRES_USER=admin
              - POSTGRES_PASSWORD=admin
              - POSTGRES_DB=dhis2
-         tmpfs:
-             - /tmp:size=1gb
          volumes:
               - type: volume
                 source: dbdata
