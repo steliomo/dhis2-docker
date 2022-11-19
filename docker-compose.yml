@@ -4,6 +4,7 @@ services:
      database:
          build:
              context: ./database
+         shm_size: 2gb
          ports:
              - "5432:5432"
          image: database
@@ -15,10 +16,6 @@ services:
               - type: volume
                 source: dbdata
                 target: /var/lib/postgresql/data
-              - type: tmpfs
-                target: /dev/shm
-                tmpfs:
-                   size: 2048000000 
          restart: unless-stopped
 
      webcontainer:
